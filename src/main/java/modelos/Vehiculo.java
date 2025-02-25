@@ -48,19 +48,25 @@ public class Vehiculo {
         duenyoActual = p;
     }
 
+    // Con marca y modelo como objetos Marca y Modelo
     public Vehiculo(int i, Marca marca, Modelo mod, String mat, LocalDate f, String c, Persona p) {
-        if (SoporteVehiculos.getInstance().esMarcaValida(marca.getNombre()) != true) {
-            throw new IllegalArgumentException("Marca invalida");
+        try {
+            if (SoporteVehiculos.getInstance().esMarcaValida(marca.getNombre()) != true) {
+                throw new IllegalArgumentException("Marca invalida");
+            }
+            if (SoporteVehiculos.getInstance().esModeloValido(marca.getNombre(), mod.getNombre()) != true) {
+                throw new IllegalArgumentException("Modelo invalido");
+            }
+            if (UtilidadesVehiculo.validaFechaMatriculacion(f) != true) {
+                throw new IllegalArgumentException("Fecha matriculacion invalida");
+            }
+            if (UtilidadesVehiculo.esMatriculaValida(mat) != true) {
+                throw new IllegalArgumentException("Matricula invalida");
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error en la creación del vehículo: " + e.getMessage());
         }
-        if (SoporteVehiculos.getInstance().esModeloValido(marca.getNombre(), mod.getNombre()) != true) {
-            throw new IllegalArgumentException("Modelo invalido");
-        }
-        if (UtilidadesVehiculo.validaFechaMatriculacion(f) != true) {
-            throw new IllegalArgumentException("Fecha matriculacion invalida");
-        }
-        if (UtilidadesVehiculo.esMatriculaValida(mat) != true) {
-            throw new IllegalArgumentException("Matricula invalida");
-        }
+
         id = i;
         marc = marca;
         model = mod;

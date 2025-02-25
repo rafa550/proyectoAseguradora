@@ -26,9 +26,15 @@ public class Poliza {
             if (!numero.matches("^[A-Z]{3}/\\d{4}/\\d{6}$")) {
                 throw new IllegalArgumentException("El número de póliza no es válido");
             }
+            for (AnualidadPoliza a : anualidades) {
+                if (!a.getTomador().equals(tomador)) {
+                    throw new IllegalArgumentException("El tomador de la cotización no coincide con el tomador de la póliza");
+                }
+            }
         } catch (IllegalArgumentException e) {
             System.err.println("Error en la creación de la póliza: " + e.getMessage());
         }
+
         this.id = id;
         this.numero = numero;
         this.anualidades = anualidades;
@@ -136,22 +142,9 @@ public class Poliza {
     }
 
     public String toString() {
-        return "Poliza{" +
-                "id=" + id +
-                ", numero='" + numero + '\'' +
-                ", anualidades=" + anualidades +
-                ", estadoPoliza=" + estadoPoliza +
-                ", motivoAnulacion='" + motivoAnulacion + '\'' +
-                ", ultimaCotizacionBase=" + ultimaCotizacionBase +
-                ", tomador=" + tomador +
-                ", conductorPrincipal=" + conductorPrincipal +
-                ", conductoresOcasionales=" + conductoresOcasionales +
-                ", precioModalidad=" + precioModalidad +
-                ", precioFinal=" + precioFinal +
-                ", fechaInicioAnualidad=" + fechaInicioAnualidad +
-                ", fechaFinAnualidad=" + fechaFinAnualidad +
-                ", fechaAnulacion=" + fechaAnulacion +
-                '}';
+        return "Poliza con número: '" + numero + '\'' +
+                "\n\t Estado de la poliza: " + estadoPoliza +
+                "\n\t --Tomador-: \n" + tomador;
     }
 
 

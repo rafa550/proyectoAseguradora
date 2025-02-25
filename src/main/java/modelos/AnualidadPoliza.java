@@ -20,6 +20,7 @@ public class AnualidadPoliza {
     private LocalDate fechaInicioAnualidad;
     private LocalDate fechaFinAnualidad;
     private LocalDate fechaAnulacion;
+    private String monedaEuros;
 
     // CONSTRUCTORES
     public AnualidadPoliza(int id, String numero, EstadoPoliza estadoPoliza, String motivoAnulacion, Cotizacion cotizacionBase, ModoPago modoPago, boolean esPagoFraccionado, Persona tomador, Conductor conductorPrincipal, List<Conductor> conductoresOcasionales, double precioModalidad, double precioFinal, LocalDate fechaInicioAnualidad, LocalDate fechaFinAnualidad, LocalDate fechaAnulacion) {
@@ -52,6 +53,13 @@ public class AnualidadPoliza {
         this.fechaInicioAnualidad = fechaInicioAnualidad;
         this.fechaFinAnualidad = fechaFinAnualidad;
         this.fechaAnulacion = fechaAnulacion;
+        if (esPagoFraccionado) {
+            this.monedaEuros = " €";
+        } else {
+            this.precioFinal = precioFinal/3;
+            this.monedaEuros = " €/mes";
+        }
+
     }
 
     public AnualidadPoliza() {
@@ -150,26 +158,18 @@ public class AnualidadPoliza {
     }
 
     public String toString() {
-        return "AnualidadPoliza{" +
-                "id=" + id +
-                ", numero='" + numero + '\'' +
-                ", estadoPoliza=" + estadoPoliza +
-                ", motivoAnulacion='" + motivoAnulacion + '\'' +
-                ", cotizacionBase=" + cotizacionBase +
-                ", modoPago=" + modoPago +
-                ", esPagoFraccionado=" + esPagoFraccionado +
-                ", tomador=" + tomador +
-                ", conductorPrincipal=" + conductorPrincipal +
-                ", conductoresOcasionales=" + conductoresOcasionales +
-                ", precioModalidad=" + precioModalidad +
-                ", precioFinal=" + precioFinal +
-                ", fechaInicioAnualidad=" + fechaInicioAnualidad +
-                ", fechaFinAnualidad=" + fechaFinAnualidad +
-                ", fechaAnulacion=" + fechaAnulacion +
-                '}';
+        return "Anualidad de la Póliza de número:" + numero +
+                "\n\t Estado: " + estadoPoliza +
+                "\n\t Cotización base: \t" + cotizacionBase +
+                "\n\t Tomador:" + tomador +
+                "\n\t Conductor principal=" + conductorPrincipal +
+                "\n\t Conductores ocasionales=" + conductoresOcasionales +
+                "\n\t Precio (según la modalidad)=" + precioModalidad + " €" +
+                "\n\t Precio final: " + precioFinal + monedaEuros;
     }
 
     public int compareTo(AnualidadPoliza a) {
         return this.getFechaInicioAnualidad().compareTo(a.getFechaInicioAnualidad());
     }
+
 }

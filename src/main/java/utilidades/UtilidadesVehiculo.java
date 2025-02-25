@@ -37,7 +37,13 @@ public class UtilidadesVehiculo {
     }
 
     public static List<Vehiculo> getVehiculos(List<Vehiculo> lV, Persona p) {
-        return new ArrayList<>(lV);
+        List<Vehiculo> vehiculosDePersona = new ArrayList<>();
+        for (Vehiculo vehiculo : lV) {
+            if (vehiculo.getDuenyoActual().equals(p)) {
+                vehiculosDePersona.add(vehiculo);
+            }
+        }
+        return vehiculosDePersona;
     }
 
     public static boolean validaFechaMatriculacion(LocalDate fecha){

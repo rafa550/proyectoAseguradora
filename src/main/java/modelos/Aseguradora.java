@@ -10,6 +10,7 @@ public class Aseguradora {
     private Direccion direccion;
     private String telefono;
     private List<Vehiculo> vehiculosAsegurados;
+    private List<Poliza> listaPolizas;
 
     // CONSTRUCTORES
 
@@ -54,9 +55,31 @@ public class Aseguradora {
     public List<Vehiculo> getVehiculos() { return vehiculosAsegurados; }
     public void setVehiculosAsegurados(List<Vehiculo> vehiculosAsegurados) { this.vehiculosAsegurados = vehiculosAsegurados; }
 
+    public List<Poliza> getListaPolizas() { return listaPolizas; }
+    public void setListaPolizas(List<Poliza> listaPolizas) { this.listaPolizas = listaPolizas; }
+
     // MÉTODOS
+    public void addPoliza(Poliza p) {
+        if (listaPolizas == null) {
+            listaPolizas = new ArrayList<Poliza>();
+        }
+        listaPolizas.add(p);
+    }
+
+    public void removePoliza(String num) {
+        if (listaPolizas == null) {
+            return;
+        }
+        for (Poliza p : listaPolizas) {
+            if (p.getNumero() == num) {
+                listaPolizas.remove(p);
+                break;
+            }
+        }
+    }
+
     public String toString() {
-        return "ID " + getId() + ": " + getNombre() + "\n" + getDireccion() + "\n " + getTelefono() + "\n" + getVehiculos();
+        return "Aseguradora " + getId() + ": " + getNombre() + "\n" + getDireccion() + "\n " + getTelefono() + "\n" + getVehiculos();
     }
 
     public boolean equals(Object o) {

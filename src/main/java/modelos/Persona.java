@@ -27,22 +27,24 @@ public class Persona {
         try {
             if (!UtilidadesPersona.esNIFValido(nf)) {
                 throw new IllegalArgumentException("El nif no es valido");
+            } else {
+                id = i;
+                nombre = n;
+                apellido1 = ape1;
+                apellido2 = ape2;
+                nif = nf;
+                fechaNacimiento = fN;
+                direccion = dir;
+                sexo = sx;
+                paisOrigen = pa;
+                email = mail;
+                telefono = tel;
             }
         } catch (IllegalArgumentException e) {
             System.err.println("Error en la creación de la persona: " + e.getMessage());
         }
 
-        id = i;
-        nombre = n;
-        apellido1 = ape1;
-        apellido2 = ape2;
-        nif = nf;
-        fechaNacimiento = fN;
-        direccion = dir;
-        sexo = sx;
-        paisOrigen = pa;
-        email = mail;
-        telefono = tel;
+
     }
 
     public Persona() {
@@ -118,7 +120,7 @@ public class Persona {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Persona oP = (Persona)o;
-        return this.getId() == oP.getId() &&
+        return this.getNif().equals(oP.getNif()) &&
                 this.getNombre().equals(oP.getNombre())
                 && this.getApellido1().equals(oP.getApellido1())
                 && this.getApellido2().equals(oP.getApellido2());

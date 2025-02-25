@@ -16,6 +16,6 @@ public class pruebaV1 {
 
 
 
-        System.out.println(p1); System.out.println(v1); System.out.println(coc1); System.out.println(m1); System.out.println(con1);
+        System.out.printf("\n" + p1); System.out.printf("\n" + v1); System.out.printf("\n" + coc1); System.out.printf("\n" + m1); System.out.printf("\n" + con1);
     }
 }

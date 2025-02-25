@@ -135,22 +135,12 @@ public class Cotizacion {
     }
 
     public String toString() {
-        return "Cotización{" +
-                "id=" + id +
-                ", codigo=" + codigo +
-                ", fechaCotizacion=" + fechaCotizacion +
-                ", fechaInicio=" + fechaInicio +
-                ", vehiculo=" + vehiculo +
-                ", tomador=" + tomador +
-                ", conductorPrincipal=" + conductorPrincipal +
-                ", conductoresOcasionales=" + conductoresOcasionales +
-                ", tieneAparcamientoPrivado=" + tieneAparcamientoPrivado +
-                ", numSini5=" + numSini5 +
-                ", precioTERC=" + precioTERC +
-                ", precioTAMP=" + precioTAMP +
-                ", precioTRIE=" + precioTRIE +
-                ", modalidadElegida=" + modalidadElegida +
-                '}';
+        return "Cotización: codigo " + codigo +
+                "\n\t Fecha de la cotización: " + fechaCotizacion +
+                "\n\t Fecha de inicio: " + fechaInicio +
+                "\n\t Vehículo: " + vehiculo +
+                "\n\t Tomador: " + tomador +
+                "\n\t Conductor Principal: " + conductorPrincipal;
     }
 
 

@@ -56,9 +56,7 @@ public class Provincia {
     }
 
     public String toString() {
-        return "Provincia{" +
-                "nombre='" + nombre + '\'' +
-                ", codigo=" + codigo +
-                '}';
+        return "\n\t Provincia: "+ nombre +
+                "\n\t Código Postal:" + codigo;
     }
 }
